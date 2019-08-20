@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ithellel';
+  cat = 'assets/imgs/cat.jpeg';
+
+
+  ngOnInit() {
+    console.log(environment);
+
+  }
 }

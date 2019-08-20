@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  api: 'https://github.com/angular/angular-cli/wiki/stories-application-environments'
 };
