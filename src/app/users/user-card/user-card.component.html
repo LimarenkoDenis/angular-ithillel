@@ -1,1 +1,25 @@
-<mat-card>user 1</mat-card>
+<mat-card class="example-card" [style.backgroundColor]="color">
+  Index: {{index}}
+
+  <button (click)="updateActive()">Child btn</button>
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{user.username}}</mat-card-title>
+    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+      {{ user.desc }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <app-button (deleteEvent)="deleteItem(user.id)"></app-button>
+
+    <button mat-button>SHARE</button>
+
+
+    Reiting: {{user | json}}
+    <mat-slider [value]="user.reiting" step="2" min="0" max="10" (change)="changeSlider($event)"></mat-slider>
+  </mat-card-actions>
+</mat-card>

@@ -1,4 +1,32 @@
-<app-header></app-header>
+<!-- <app-header></app-header>
 <app-about></app-about>
 
-<app-user-list></app-user-list>
+<app-user-list></app-user-list> -->
+
+
+
+<!-- clicl
+input -->
+
+<!-- editEvent -->
+
+<button *ngIf="!isActive" (click)="chnangeView()">Parent BTN</button>
+
+
+
+<div *ngFor="let item of users; index as i; odd as myodd; first as myFirst">
+  {{myodd}}{{myFirst}}
+  <app-user-card
+  *ngIf="isActive"
+  [user]="item"
+  [color]="item.color"
+  [img]="cat"
+  (editEvent)="deleteItem($event)"
+  (updateRaiting)="updateRaiting($event)"
+  (updateView)="chnangeView()"
+  [index]="i"
+  ></app-user-card>
+</div>
+
+
+<div *ngFor="let item of [1, 2, 3]">{{item}}</div>

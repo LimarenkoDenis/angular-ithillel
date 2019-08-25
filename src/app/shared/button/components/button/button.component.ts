@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ButtonComponent implements OnInit {
 
+
+  @Output()
+  public deleteEvent: EventEmitter<void> = new EventEmitter();
+
+  
   constructor() { }
 
   ngOnInit() {
   }
 
+
+  deleteItem() {
+    this.deleteEvent.emit();
+  }
 }

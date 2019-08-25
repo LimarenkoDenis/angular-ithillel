@@ -20,11 +20,11 @@ export class HeaderComponent implements OnInit {
 
 
 
-  getRandom(): number {
-    const name = 'Dima';
+  // getRandom(): number {
+  //   const name = 'Dima';
 
-    console.log('this name: ', this.name,    'const name:', name);
+  //   console.log('this name: ', this.name,    'const name:', name);
 
-    return Math.random();
-  }
+  //   return Math.random();
+  // }
 }
