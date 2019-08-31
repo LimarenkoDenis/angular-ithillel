@@ -1,0 +1,19 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title> {{ product.title }}</mat-card-title>
+    <mat-card-title> {{ product.created | date | uppercase}}</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image [src]="product.photo" alt="Photo of a Shiba Inu">
+  <img class="logo" mat-card-image [src]="product.type | productType" [alt]="product.type | productType">
+  <mat-card-content>
+    <p>
+      {{product.description |  description: 10 }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Add to Cart</button>
+    <button mat-button>Buy for now !</button>
+    <button mat-button>Add To favority</button>
+  </mat-card-actions>
+</mat-card>

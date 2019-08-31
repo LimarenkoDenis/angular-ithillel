@@ -1,3 +1,6 @@
+<app-products></app-products>
+
+
 <!-- <app-header></app-header>
 <app-about></app-about>
 
@@ -9,9 +12,46 @@
 input -->
 
 <!-- editEvent -->
+<!-- <button (click)="chnangeView()">Parent BTN</button>
 
-<button *ngIf="!isActive" (click)="chnangeView()">Parent BTN</button>
 
+
+<button  [ngClass]="{'first': true, 'second': true, 'third': isActive}" (click)="grid = 'row'">Row</button>
+<button (click)="grid = 'table'">table</button>
+<button (click)="grid = 'list'">list</button>
+ -->
+
+<!-- <app-table *ngSwitchCase="'table'" [hotels]="hotels"></app-table>
+  <app-row-table *ngSwitchCase="'row'" [hotels]="hotels"></app-row-table> -->
+
+<!-- <div [ngSwitch]="grid">
+  <div *ngSwitchCase="'table'">table</div>
+
+  <div *ngSwitchCase="'row'">row</div>
+  <div *ngSwitchCase="'list'">list</div>
+  <div *ngSwitchDefault>table</div>
+</div> -->
+
+
+
+<!-- <div *ngIf="isLoading; else elseBlock">loading...</div>
+<ng-template #elseBlock>list</ng-template> -->
+
+
+
+<!-- <div *ngIf="condition; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>Content to render when condition is true.</ng-template>
+<ng-template #elseBlock>Content to render when condition is false.</ng-template>
+
+ -->
+<!--
+
+
+
+
+<div *ngFor="let item of object | keyvalue">
+  {{item.key}}:{{item.value}}
+</div>
 
 
 <div *ngFor="let item of users; index as i; odd as myodd; first as myFirst">
@@ -29,4 +69,9 @@ input -->
 </div>
 
 
+
+
+
 <div *ngFor="let item of [1, 2, 3]">{{item}}</div>
+
+ -->

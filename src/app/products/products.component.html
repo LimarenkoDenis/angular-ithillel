@@ -1,0 +1,5 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<div *ngFor="let product of products">
+  <app-product fxLayout="row" fxLayoutAlign="space-around center" [product]="product"></app-product>
+</div>

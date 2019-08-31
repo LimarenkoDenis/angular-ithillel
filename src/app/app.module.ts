@@ -1,3 +1,4 @@
+import { ProductsModule } from './products/products.module';
 import { UsersModule } from './users/users.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -22,7 +23,8 @@ import { AboutComponent } from './about/about.component';
     AppRoutingModule,
     UsersModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    ProductsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

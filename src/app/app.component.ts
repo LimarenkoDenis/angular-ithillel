@@ -7,7 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  grid: 'table' | 'list' | 'row' = 'table';
+
+
+
+  condition = true;
   isActive = true;
+
+
+  isLoading = true;
+
+
+  object: {[key: number]: string} = {2: 'foo', 1: 'bar'};
 
 
   title = 'ithellel';
@@ -42,6 +53,12 @@ export class AppComponent {
 
 
   ngOnInit() {
+
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000);
+
+
     console.log(environment);
 
   }
