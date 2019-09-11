@@ -1,3 +1,4 @@
+import { ProductsService } from './services/products.service';
 import {ButtonModule} from './button/button.module';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
@@ -21,6 +22,7 @@ import {DescriptionPipe} from './pipes/description.pipe';
     MatProgressSpinnerModule,
     FlexLayoutModule
   ],
+  // providers: [ProductsService],
   exports: [
     CardComponent,
     MatCardModule, MatButtonModule,

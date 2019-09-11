@@ -7,3 +7,7 @@ export interface IProduct {
   type: string;
   inCart?: boolean;
 }
+
+export interface ICart extends IProduct {
+  count: number;
+}

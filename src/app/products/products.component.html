@@ -1,5 +1,5 @@
-<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-spinner *ngIf="!(products$ | async)?.length"></mat-spinner>
 
-<div *ngFor="let product of products">
-  <app-product fxLayout="row" fxLayoutAlign="space-around center" [product]="product"></app-product>
+<div *ngFor="let product of products$ | async">
+  <app-product fxLayout="row" fxLayoutAlign="space-around center" [product]="product" (addToCart)="addToCart(product)"></app-product>
 </div>

@@ -1,3 +1,4 @@
+import { CartModule } from './cart/cart.module';
 import { ProductsModule } from './products/products.module';
 import { UsersModule } from './users/users.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,6 +26,7 @@ import { AboutComponent } from './about/about.component';
     BrowserAnimationsModule,
     SharedModule,
     ProductsModule,
+    CartModule
   ],
   providers: [],
   bootstrap: [AppComponent],
