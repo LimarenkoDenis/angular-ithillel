@@ -4,3 +4,17 @@
 
   /* .. */
 }
+
+.app {
+  display: flex;
+}
+
+.wrapper {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cart {
+  width: 30%;
+}

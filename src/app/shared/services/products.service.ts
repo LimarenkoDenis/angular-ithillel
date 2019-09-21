@@ -24,7 +24,18 @@ export class ProductsService {
 
 
   public addToCart(product: IProduct): void {
-    this.cart.push({...product, count: 1});
+    const index: number = this.cart.findIndex((item: ICart) => item.id === product.id);
+
+    if (index === -1) {
+      this.cart.push({...product, count: 1});
+
+      // TODO: do not notify cart component
+      // this.cart = [...this.cart, {...product, count: 1}];
+      return;
+    }
+
+    const element: ICart = this.cart[index];
+    this.cart.splice(index, 1, {...element, count: element.count + 1});
   }
 
   public getCart(): ICart[] {
