@@ -1,25 +1,68 @@
-import { ICart } from './../../products/interfaces/product';
+import { PageEvent } from '@angular/material/paginator';
+import { environment } from './../../../environments/environment';
+import { ICart, IProduct } from './../../products/interfaces/product';
 import { Injectable } from '@angular/core';
-import {IProduct} from 'src/app/products/interfaces/product';
-import * as data from '../../products/mock-data/products.json';
 import {Observable, of} from 'rxjs';
-import { delay, tap } from 'rxjs/operators';
+import { delay, tap, catchError } from 'rxjs/operators';
+import {HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
-
-@Injectable({
-  providedIn: 'root'
-})
+// {
+//   providedIn: 'root'
+// }
+@Injectable()
 export class ProductsService {
-  private products: IProduct[] = data.products;
   private cart: ICart[] = [];
 
+  public constructor(
+    private http: HttpClient,
+    private _snackBar: MatSnackBar
+    // private usersServicee: UsersService
+  ) {
 
-  public getProduct(): Observable<IProduct[]> {
-    // API request
-    return of(this.products).pipe(
-      tap(() => console.log('product request')),
-      delay(3000)
+  }
+
+
+  public getProduct(params: Partial<PageEvent>): Observable<IProduct[]> {
+    const httpParams: HttpParams = new HttpParams({
+      fromObject: {
+        _page: String(params.pageIndex),
+        _limit: String(params.pageSize)
+      }
+    });
+    return this.http.get<IProduct[]>(`${environment.api}/products`, {
+      params: httpParams
+    }).pipe(
+      catchError(() => {
+        this._snackBar.open('Server is unvalible now');
+        console.log('error');
+
+        return of([]);
+      })
     );
+
+
+    // API request
+    // return of(this.products).pipe(
+    //   tap(() => console.log('product request')),
+    //   delay(3000)
+    // );
+  }
+
+  public deleteProduct(id: number): Observable<void> {
+    // TODO: localStorage sericce
+    const token:string  = localStorage.getItem('token');
+    // 'Authorization=Be'
+    const headers: HttpHeaders = new HttpHeaders( {
+      'Authorization': `Bearer ${token}`
+    });
+
+
+    return this.http.delete<void>(`${environment.api}/products/${id}`, { headers });
+  }
+
+  public addProduct(newProduct: IProduct): Observable<IProduct> {
+    return this.http.post<IProduct>(`${environment.api}/products`, newProduct);
   }
 
 

@@ -11,7 +11,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ProductTypePipe} from './pipes/product-type.pipe';
 import {DescriptionPipe} from './pipes/description.pipe';
-
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   declarations: [CardComponent, ProductTypePipe, DescriptionPipe],
   imports: [
@@ -20,12 +21,14 @@ import {DescriptionPipe} from './pipes/description.pipe';
     MatButtonModule,
     MatSliderModule,
     MatProgressSpinnerModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatPaginatorModule
   ],
   // providers: [ProductsService],
   exports: [
     CardComponent,
     MatCardModule, MatButtonModule,
-    MatSliderModule, MatProgressSpinnerModule, FlexLayoutModule, ProductTypePipe, DescriptionPipe]
+    MatSliderModule, MatProgressSpinnerModule, FlexLayoutModule, ProductTypePipe, DescriptionPipe, MatPaginatorModule,
+    MatSnackBarModule]
 })
 export class SharedModule {}

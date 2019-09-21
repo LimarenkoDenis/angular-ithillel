@@ -1,5 +1,18 @@
 <mat-spinner *ngIf="!(products$ | async)?.length"></mat-spinner>
 
 <div *ngFor="let product of products$ | async">
-  <app-product fxLayout="row" fxLayoutAlign="space-around center" [product]="product" (addToCart)="addToCart(product)"></app-product>
+  <app-product
+    fxLayout="row"
+    fxLayoutAlign="space-around center"
+    [product]="product"
+    (addToCart)="addToCart(product)"
+    (deleteProductEvent)="deleteProduct($event)">
+  </app-product>
 </div>
+<mat-paginator [length]="100"
+              [pageSize]="params.pageSize"
+              (page)="changePage($event)"
+              [pageSizeOptions]="[2, 5, 10, 25, 100]">
+</mat-paginator>
+
+<span (click)="addProduct()">add product</span>

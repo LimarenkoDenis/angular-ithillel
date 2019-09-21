@@ -13,7 +13,15 @@ export class ProductComponent  {
   @Output()
   public addToCart: EventEmitter<IProduct> = new EventEmitter();
 
+  @Output()
+  public deleteProductEvent: EventEmitter<number> = new EventEmitter();
+
+
   public toCart(product: IProduct): void {
     this.addToCart.emit(product);
+  }
+
+  public deleteProduct(id: number): void {
+    this.deleteProductEvent.emit(id);
   }
 }

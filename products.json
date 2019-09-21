@@ -83,5 +83,6 @@
       "type": "drink",
       "id": 10
     }
-  ]
+  ],
+  "favorites": []
 }
