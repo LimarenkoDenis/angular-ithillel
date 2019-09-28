@@ -1,6 +1,6 @@
 <mat-spinner *ngIf="!(products$ | async)?.length"></mat-spinner>
 
-<div *ngFor="let product of products$ | async">
+<div *ngFor="let product of products$ | async" [routerLink]="[product.id]">
   <app-product
     fxLayout="row"
     fxLayoutAlign="space-around center"

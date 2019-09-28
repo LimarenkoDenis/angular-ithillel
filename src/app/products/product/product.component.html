@@ -1,10 +1,10 @@
 <mat-card class="example-card">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title> {{ product.title }}</mat-card-title>
+    <mat-card-title [appHighlight]="'red'" defaultColor="'violet'"> {{ product.title }}</mat-card-title>
     <mat-card-title> {{ product.created | date | uppercase}}</mat-card-title>
   </mat-card-header>
-  <img mat-card-image [src]="product.photo" alt="Photo of a Shiba Inu">
+  <img [appHighlight]="'red'" defaultColor="'violet'" mat-card-image [src]="product.photo" alt="Photo of a Shiba Inu">
   <img class="logo" mat-card-image [src]="product.type | productType" [alt]="product.type | productType">
   <mat-card-content>
     <p>
@@ -12,9 +12,9 @@
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button (click)="toCart(product)">Add to Cart</button>
-    <button mat-button>Buy for now !</button>
+    <button mat-button (click)="toCart(product); $event.stopPropagation()">Add to Cart</button>
+    <button mat-button [appHighlight]="'red'" defaultColor="'violet'">Buy for now !</button>
     <button mat-button>Add To favority</button>
-    <button mat-button (click)="deleteProduct(product.id)">Delete</button>
+    <button mat-button  *appAcl="['admin']" (click)="deleteProduct(product.id); $event.stopPropagation()">Delete</button>
   </mat-card-actions>
 </mat-card>

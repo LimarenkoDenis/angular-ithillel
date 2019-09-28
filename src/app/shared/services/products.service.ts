@@ -30,6 +30,7 @@ export class ProductsService {
         _limit: String(params.pageSize)
       }
     });
+
     return this.http.get<IProduct[]>(`${environment.api}/products`, {
       params: httpParams
     }).pipe(

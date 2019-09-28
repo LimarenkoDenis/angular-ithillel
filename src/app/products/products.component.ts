@@ -10,7 +10,7 @@ import {PageEvent} from '@angular/material/paginator';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit, OnDestroy {
+export class ProductsComponent implements OnInit {
   public params: Partial<PageEvent> = {
     pageSize: 2,
     pageIndex: 1
@@ -61,9 +61,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
 
-  public ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
+  // public ngOnDestroy(): void {
+  //   this.subscription.unsubscribe();
+  // }
 
   public changePage(event: PageEvent): void {
     this.params = {...event, pageIndex: event.pageIndex + 1};

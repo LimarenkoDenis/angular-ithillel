@@ -15,11 +15,22 @@ import {SharedModule} from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AboutComponent } from './about/about.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HelpComponent } from './help/help.component';
+import {RouterModule} from '@angular/router';
+import {rotes} from './routes';
+import { OrderComponent } from './order/order.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    AboutComponent
+    AboutComponent,
+    HelpComponent,
+    OrderComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,
@@ -27,9 +38,10 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
     UsersModule,
     BrowserAnimationsModule,
     SharedModule,
-    ProductsModule,
-    CartModule,
-    HttpClientModule
+    // ProductsModule,
+    // CartModule,
+    HttpClientModule,
+    RouterModule.forRoot(rotes)
   ],
   providers: [
     ProductsService,

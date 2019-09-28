@@ -13,8 +13,11 @@ import {ProductTypePipe} from './pipes/product-type.pipe';
 import {DescriptionPipe} from './pipes/description.pipe';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { AclDirective } from './directives/acl.directive';
+import { HighlightDirective } from './directives/highlight.directive';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 @NgModule({
-  declarations: [CardComponent, ProductTypePipe, DescriptionPipe],
+  declarations: [CardComponent, ProductTypePipe, DescriptionPipe, AclDirective, HighlightDirective, PageNotFoundComponent],
   imports: [
     CommonModule,
     MatCardModule,
@@ -29,6 +32,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     CardComponent,
     MatCardModule, MatButtonModule,
     MatSliderModule, MatProgressSpinnerModule, FlexLayoutModule, ProductTypePipe, DescriptionPipe, MatPaginatorModule,
-    MatSnackBarModule]
+    MatSnackBarModule,
+    AclDirective,
+    HighlightDirective,
+    PageNotFoundComponent
+  ]
 })
 export class SharedModule {}

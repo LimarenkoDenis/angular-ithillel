@@ -1,20 +1,15 @@
-<p>header works!</p>
-<app-card></app-card>
+<mat-card>
+
+  <span routerLink="/cart">total 100</span>
 
 
 
-{{ 1 + 1 }}
-
-<!-- {{ getRandom() }} -->
-
-{{ name }}
-
-
-{{ account.name }}
-{{ account.position }}
-
-
-{{ account | json }}
-
-
-{{ privateName }}
+  <div>
+    <ul>
+      <li routerLink="/products">Products</li>
+      <li routerLink="/about">About</li>
+      <li routerLink="/help">Help</li>
+      <li routerLink="/admin" *appAcl="['admin']">Admin</li>
+    </ul>
+  </div>
+</mat-card>

@@ -5,26 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
-  public readonly name = 'Dan';
-  private privateName = 'Private';
-  public account: {  } = {
-    name: 'Dan',
-    position: 'Engeener'
-  };
+export class HeaderComponent {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-
-
-  // getRandom(): number {
-  //   const name = 'Dima';
-
-  //   console.log('this name: ', this.name,    'const name:', name);
-
-  //   return Math.random();
-  // }
 }
