@@ -1,4 +1,19 @@
-<p>products-detail works!</p>
+<pre>
+  {{product$ | async | json }}
+</pre>
+
+<div>
+  titile {{ (product$ | async)?.title }}
+  price {{ (product$ | async)?.price }}
+</div>
+
+
+<div *ngIf="product$ | async as product">
+  titile {{ product?.title }}
+  price {{ product?.price }}
+</div>
+
+
 <button routerLinkActive="active" [routerLink]="['comments']">Comments</button>
 <button routerLinkActive="active" [routerLink]="['favorites']">Favorites</button>
 <router-outlet></router-outlet>

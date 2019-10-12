@@ -2,8 +2,9 @@ import { ProductsService } from './../shared/services/products.service';
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {IProduct} from './interfaces/product';
 import {Subscription, Observable, of} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, switchMap} from 'rxjs/operators';
 import {PageEvent} from '@angular/material/paginator';
+import {Router, ActivatedRoute, ParamMap} from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -21,11 +22,16 @@ export class ProductsComponent implements OnInit {
 
   public constructor(
     private productsService: ProductsService,
+    private _activatedRoute: ActivatedRoute,
+    private _router: Router,
     // private usersService: UsersService,
   ) {
   }
 
   public ngOnInit(): void {
+
+    console.log('ngOnInit!!!!!!!');
+
     this.fetProducts();
 
     // this.subscription = this.productsService.getProduct()
@@ -43,6 +49,10 @@ export class ProductsComponent implements OnInit {
     this.productsService.deleteProduct(id).subscribe(() => {
       this.fetProducts();
     });
+  }
+
+  public openProduct(id: number): void {
+    this._router.navigate(['/products', id]);
   }
 
   public addProduct(): void {
@@ -67,10 +77,34 @@ export class ProductsComponent implements OnInit {
 
   public changePage(event: PageEvent): void {
     this.params = {...event, pageIndex: event.pageIndex + 1};
-    this.fetProducts();
+
+    // this._router.navigate([''], { queryParams: this.params,  });
+    // skipLocationChange: true - do not change url, but navigate
+
+
+    this._router.navigate(['/products'], { queryParams: this.params });
+
+    // this.fetProducts(this.params);
   }
 
-  public fetProducts(): void {
-    this.products$ = this.productsService.getProduct(this.params);
+  public fetProducts(params?: Partial<PageEvent>): void {
+    this.products$ = this._activatedRoute.queryParamMap.pipe(
+      switchMap((data: ParamMap) => {
+        return params ?
+          this.productsService.getProduct(params) :
+          this.productsService.getProduct({
+            pageIndex: Number(data.get('pageIndex')),
+            pageSize: Number(data.get('pageSize')),
+          });
+      })
+    );
+
+    // .subscribe((data) => {
+    //   console.log(data);
+
+    // })
+
+    // this._router.navigate(['/products'], { queryParams: this.params });
+    // this.products$ = this.productsService.getProduct(this.params);
   }
 }

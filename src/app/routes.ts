@@ -1,3 +1,4 @@
+import { CanDeactivateGuard } from './shared/guards/can-deactivate.guard';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { OrderGuard } from './shared/guards/order.guard';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
@@ -13,6 +14,7 @@ export const rotes: Routes = [
   { path: '', redirectTo: 'about', pathMatch: 'full'},
   {
     path: 'products',
+    // canLoad: [],
     loadChildren: () => import('./products/products.module').then((mod: any) => mod.ProductsModule)
   },
   {
@@ -21,7 +23,7 @@ export const rotes: Routes = [
   },
   { path: 'about', component: AboutComponent},
   { path: 'help', component: HelpComponent},
-  {path: 'order', component: OrderComponent, canActivate: [OrderGuard]},
+  {path: 'order', component: OrderComponent, canActivate: [OrderGuard], canDeactivate: [CanDeactivateGuard]},
   {path: 'admin', component: AdminPanelComponent},
   { path: '**', component: PageNotFoundComponent }
 ];

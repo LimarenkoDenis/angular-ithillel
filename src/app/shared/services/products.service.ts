@@ -22,7 +22,16 @@ export class ProductsService {
 
   }
 
+  public getProductComments(productId: number): Observable<any> {
+    return this.http.get<any>(`${environment.api}/products/${productId}/comments`);
+  }
 
+  public getProductById(id: number): Observable<IProduct> {
+    return this.http.get<IProduct>(`${environment.api}/products/${id}`);
+  }
+
+
+  // TODO: rename getProducts
   public getProduct(params: Partial<PageEvent>): Observable<IProduct[]> {
     const httpParams: HttpParams = new HttpParams({
       fromObject: {

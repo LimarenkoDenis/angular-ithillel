@@ -1,3 +1,4 @@
+import { OrderGuard } from './../shared/guards/order.guard';
 import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -21,6 +22,7 @@ import { FavoritesComponent } from './products-detail/favorites/favorites.compon
       },
       {
         path: ':id', component: ProductsDetailComponent,
+        // canActivateChild: [OrderGuard],
         children: [
           {path: '', redirectTo: 'comments'},
           {path: 'comments', component: CommentComponent},

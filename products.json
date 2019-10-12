@@ -84,5 +84,17 @@
       "id": 10
     }
   ],
+  "comments": [
+    {
+      "id": 0,
+      "productId": 0,
+      "comment": "Test"
+    },
+    {
+      "id": 1,
+      "productId": 0,
+      "comment": "Test 1"
+    }
+  ],
   "favorites": []
 }
