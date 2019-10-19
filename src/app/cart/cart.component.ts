@@ -1,5 +1,9 @@
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { ProductsService } from './../shared/services/products.service';
 import { Component, OnInit } from '@angular/core';
+import {IRootState} from '../reducers';
+import {ICart} from '../products/interfaces/product';
 
 @Component({
   selector: 'app-cart',
@@ -8,15 +12,18 @@ import { Component, OnInit } from '@angular/core';
   // providers: [ProductsService]
 })
 export class CartComponent implements OnInit {
-  public cart = [];
+  public cart$: Observable<ICart[]>;
 
 
   constructor(
-    private productService: ProductsService
+    private store: Store<IRootState>
+    // private productService: ProductsService
   ) { }
 
   ngOnInit() {
-    this.cart = this.productService.getCart();
+    this.cart$ = this.store.pipe(select('cart'));
+
+    // this.cart = this.productService.getCart();
 
     // setInterval(() => {
     //   this.cart = this.productService.getCart();

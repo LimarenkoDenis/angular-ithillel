@@ -125,5 +125,8 @@
       }
     }
   },
-  "defaultProject": "ithellel"
+  "defaultProject": "ithellel",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

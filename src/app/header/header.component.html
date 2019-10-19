@@ -1,7 +1,10 @@
 <mat-card>
 
-  <span routerLink="/cart">total 100</span>
+  <span routerLink="/cart">total {{totalCount$ | async}}</span>
 
+
+
+  GRN: {{totalCountGRN$ | async}}
 
 
   <div>

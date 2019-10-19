@@ -1,3 +1,7 @@
+import { loadProduct } from './state/product.actions';
+import { addproductToCart } from './../cart/state/cart.actions';
+import { IRootState } from './../reducers/index';
+import { Store } from '@ngrx/store';
 import { ProductsService } from './../shared/services/products.service';
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {IProduct} from './interfaces/product';
@@ -21,6 +25,7 @@ export class ProductsComponent implements OnInit {
   public products$: Observable<IProduct[]>;
 
   public constructor(
+    private store: Store<IRootState>,
     private productsService: ProductsService,
     private _activatedRoute: ActivatedRoute,
     private _router: Router,
@@ -29,6 +34,9 @@ export class ProductsComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+
+
+    this.store.dispatch(loadProduct({ limit: 1, pageIndex: 1}));
 
     console.log('ngOnInit!!!!!!!');
 
@@ -42,7 +50,8 @@ export class ProductsComponent implements OnInit {
   }
 
   public addToCart(product: IProduct): void {
-    this.productsService.addToCart(product);
+    this.store.dispatch(addproductToCart({ item: product }));
+    // this.productsService.addToCart(product);
   }
 
   public deleteProduct(id: number): void {

@@ -1,5 +1,5 @@
 <p>cart works!</p>
-<div *ngFor="let item of cart">
+<div *ngFor="let item of cart$ | async">
   {{item.title}}
   Count: {{item.count}}
 </div>

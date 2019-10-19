@@ -1,3 +1,5 @@
+import { environment } from './../environments/environment';
+import { reducers } from './reducers/index';
 import { AuthService } from './shared/services/auth.service';
 import { ProductsService } from './shared/services/products.service';
 import { CartModule } from './cart/cart.module';
@@ -20,7 +22,9 @@ import {RouterModule} from '@angular/router';
 import {rotes} from './routes';
 import { OrderComponent } from './order/order.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
-
+import {StoreModule} from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CounterComponent } from './counter/counter.component';
 
 
 @NgModule({
@@ -30,7 +34,8 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     AboutComponent,
     HelpComponent,
     OrderComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    CounterComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,12 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     // ProductsModule,
     // CartModule,
     HttpClientModule,
-    RouterModule.forRoot(rotes)
+    RouterModule.forRoot(rotes),
+    StoreModule.forRoot(reducers, { runtimeChecks : { }}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
   ],
   providers: [
     ProductsService,
