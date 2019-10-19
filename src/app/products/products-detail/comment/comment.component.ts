@@ -18,9 +18,9 @@ export class CommentComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    this.comments$ = this._activatedRoute.paramMap.pipe(
+    this.comments$ = this._activatedRoute.parent.paramMap.pipe(
       switchMap((data: ParamMap) => this._productsService.getProductComments(+data.get('id')))
-    );
+    ); 
   }
 
 }
