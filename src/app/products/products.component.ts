@@ -34,7 +34,7 @@ export class ProductsComponent implements OnInit {
 
     this.fetProducts();
 
-    // this.subscription = this.productsService.getProduct()
+    // this.subscription = this.productsService.getProducts()
     // .subscribe((products: IProduct[]) => {
     //   this.products = products;
     //   this.isLoading = false;
@@ -91,8 +91,8 @@ export class ProductsComponent implements OnInit {
     this.products$ = this._activatedRoute.queryParamMap.pipe(
       switchMap((data: ParamMap) => {
         return params ?
-          this.productsService.getProduct(params) :
-          this.productsService.getProduct({
+          this.productsService.getProducts(params) :
+          this.productsService.getProducts({
             pageIndex: Number(data.get('pageIndex')),
             pageSize: Number(data.get('pageSize')),
           });
@@ -105,6 +105,6 @@ export class ProductsComponent implements OnInit {
     // })
 
     // this._router.navigate(['/products'], { queryParams: this.params });
-    // this.products$ = this.productsService.getProduct(this.params);
+    // this.products$ = this.productsService.getProducts(this.params);
   }
 }

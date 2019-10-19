@@ -31,8 +31,8 @@ export class ProductsService {
   }
 
 
-  // TODO: rename getProducts
-  public getProduct(params: Partial<PageEvent>): Observable<IProduct[]> {
+  // TODO: rename getProducts - Done by Peter
+  public getProducts(params: Partial<PageEvent>): Observable<IProduct[]> {
     const httpParams: HttpParams = new HttpParams({
       fromObject: {
         _page: String(params.pageIndex),
