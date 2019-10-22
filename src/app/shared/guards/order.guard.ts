@@ -25,7 +25,7 @@ export class OrderGuard implements CanActivate, CanActivateChild {
     );
 
 
-    // return this.productsService.getProduct({}).pipe(
+    // return this.productsService.getProducts({}).pipe(
     //   map((pr) => Boolean(pr.length))
     // )
   }
