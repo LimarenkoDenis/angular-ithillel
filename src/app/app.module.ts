@@ -59,6 +59,6 @@ import { CounterComponent } from './counter/counter.component';
     //
   ],
   bootstrap: [AppComponent],
-  exports: [HeaderComponent]
+  exports: [HeaderComponent,]
 })
 export class AppModule { }
